@@ -1,28 +1,41 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: Katalog pośredni (Debug\) zawiera pliki udostępnione z innego projektu (Project1.vcxproj). Może to spowodować niepoprawne zachowanie podczas oczyszczania i ponownej kompilacji.
   main.cpp
-c:\users\mateusz\desktop\mk\project1\project1\main.cpp(218): warning C4305: "argument": obcięcie z "double" do "float"
-c:\users\mateusz\desktop\mk\project1\project1\main.cpp(289): warning C4244: "inicjowanie": konwersja z "double" do "float", możliwa utrata danych
-c:\users\mateusz\desktop\mk\project1\project1\main.cpp(319): warning C4305: "argument": obcięcie z "double" do "GLfloat"
-c:\users\mateusz\desktop\mk\project1\project1\main.cpp(330): warning C4305: "argument": obcięcie z "double" do "GLfloat"
-c:\users\mateusz\desktop\mk\project1\project1\main.cpp(360): warning C4305: "argument": obcięcie z "double" do "GLfloat"
-c:\users\mateusz\desktop\mk\project1\project1\main.cpp(409): warning C4244: "inicjowanie": konwersja z "double" do "float", możliwa utrata danych
-c:\users\mateusz\desktop\mk\project1\project1\main.cpp(481): warning C4244: "=": konwersja z "double" do "float", możliwa utrata danych
-c:\users\mateusz\desktop\mk\project1\project1\main.cpp(482): warning C4244: "=": konwersja z "double" do "float", możliwa utrata danych
-c:\users\mateusz\desktop\mk\project1\project1\main.cpp(486): warning C4244: "inicjowanie": konwersja z "double" do "float", możliwa utrata danych
-c:\users\mateusz\desktop\mk\project1\project1\main.cpp(487): warning C4244: "inicjowanie": konwersja z "double" do "float", możliwa utrata danych
-c:\users\mateusz\desktop\mk\project1\project1\main.cpp(488): warning C4244: "=": konwersja z "double" do "float", możliwa utrata danych
-c:\users\mateusz\desktop\mk\project1\project1\main.cpp(489): warning C4244: "=": konwersja z "double" do "float", możliwa utrata danych
-c:\users\mateusz\desktop\mk\project1\project1\main.cpp(513): warning C4244: "-=": konwersja z "double" do "float", możliwa utrata danych
-c:\users\mateusz\desktop\mk\project1\project1\main.cpp(531): warning C4244: "inicjowanie": konwersja z "double" do "float", możliwa utrata danych
+c:\users\mateusz\desktop\mk\project1\project1\main.cpp(224): warning C4305: "argument": obcięcie z "double" do "float"
 c:\users\mateusz\desktop\mk\project1\project1\main.cpp(532): warning C4244: "inicjowanie": konwersja z "double" do "float", możliwa utrata danych
-c:\users\mateusz\desktop\mk\project1\project1\main.cpp(547): warning C4244: "inicjowanie": konwersja z "double" do "float", możliwa utrata danych
-c:\users\mateusz\desktop\mk\project1\project1\main.cpp(548): warning C4244: "inicjowanie": konwersja z "double" do "float", możliwa utrata danych
-c:\users\mateusz\desktop\mk\project1\project1\main.cpp(558): warning C4244: "inicjowanie": konwersja z "double" do "float", możliwa utrata danych
-c:\users\mateusz\desktop\mk\project1\project1\main.cpp(559): warning C4244: "inicjowanie": konwersja z "double" do "float", możliwa utrata danych
-c:\users\mateusz\desktop\mk\project1\project1\main.cpp(567): warning C4244: "inicjowanie": konwersja z "double" do "float", możliwa utrata danych
-c:\users\mateusz\desktop\mk\project1\project1\main.cpp(568): warning C4244: "inicjowanie": konwersja z "double" do "float", możliwa utrata danych
-c:\users\mateusz\desktop\mk\project1\project1\main.cpp(576): warning C4244: "inicjowanie": konwersja z "double" do "float", możliwa utrata danych
-c:\users\mateusz\desktop\mk\project1\project1\main.cpp(577): warning C4244: "inicjowanie": konwersja z "double" do "float", możliwa utrata danych
-c:\users\mateusz\desktop\mk\project1\project1\main.cpp(585): warning C4244: "inicjowanie": konwersja z "double" do "float", możliwa utrata danych
-c:\users\mateusz\desktop\mk\project1\project1\main.cpp(586): warning C4244: "inicjowanie": konwersja z "double" do "float", możliwa utrata danych
+c:\users\mateusz\desktop\mk\project1\project1\main.cpp(645): warning C4305: "argument": obcięcie z "double" do "GLfloat"
+c:\users\mateusz\desktop\mk\project1\project1\main.cpp(652): warning C4305: "argument": obcięcie z "double" do "GLfloat"
+c:\users\mateusz\desktop\mk\project1\project1\main.cpp(784): warning C4244: "inicjowanie": konwersja z "double" do "float", możliwa utrata danych
+c:\users\mateusz\desktop\mk\project1\project1\main.cpp(835): warning C4244: "+=": konwersja z "double" do "float", możliwa utrata danych
+c:\users\mateusz\desktop\mk\project1\project1\main.cpp(836): warning C4244: "-=": konwersja z "double" do "float", możliwa utrata danych
+c:\users\mateusz\desktop\mk\project1\project1\main.cpp(845): warning C4244: "+=": konwersja z "double" do "float", możliwa utrata danych
+c:\users\mateusz\desktop\mk\project1\project1\main.cpp(846): warning C4244: "-=": konwersja z "double" do "float", możliwa utrata danych
+c:\users\mateusz\desktop\mk\project1\project1\main.cpp(864): warning C4244: "=": konwersja z "double" do "float", możliwa utrata danych
+c:\users\mateusz\desktop\mk\project1\project1\main.cpp(865): warning C4244: "=": konwersja z "double" do "float", możliwa utrata danych
+c:\users\mateusz\desktop\mk\project1\project1\main.cpp(869): warning C4244: "inicjowanie": konwersja z "double" do "float", możliwa utrata danych
+c:\users\mateusz\desktop\mk\project1\project1\main.cpp(870): warning C4244: "inicjowanie": konwersja z "double" do "float", możliwa utrata danych
+c:\users\mateusz\desktop\mk\project1\project1\main.cpp(871): warning C4244: "=": konwersja z "double" do "float", możliwa utrata danych
+c:\users\mateusz\desktop\mk\project1\project1\main.cpp(872): warning C4244: "=": konwersja z "double" do "float", możliwa utrata danych
+c:\users\mateusz\desktop\mk\project1\project1\main.cpp(896): warning C4244: "-=": konwersja z "double" do "float", możliwa utrata danych
+c:\users\mateusz\desktop\mk\project1\project1\main.cpp(914): warning C4244: "inicjowanie": konwersja z "double" do "float", możliwa utrata danych
+c:\users\mateusz\desktop\mk\project1\project1\main.cpp(915): warning C4244: "inicjowanie": konwersja z "double" do "float", możliwa utrata danych
+c:\users\mateusz\desktop\mk\project1\project1\main.cpp(930): warning C4244: "inicjowanie": konwersja z "double" do "float", możliwa utrata danych
+c:\users\mateusz\desktop\mk\project1\project1\main.cpp(931): warning C4244: "inicjowanie": konwersja z "double" do "float", możliwa utrata danych
+c:\users\mateusz\desktop\mk\project1\project1\main.cpp(941): warning C4244: "inicjowanie": konwersja z "double" do "float", możliwa utrata danych
+c:\users\mateusz\desktop\mk\project1\project1\main.cpp(942): warning C4244: "inicjowanie": konwersja z "double" do "float", możliwa utrata danych
+c:\users\mateusz\desktop\mk\project1\project1\main.cpp(950): warning C4244: "inicjowanie": konwersja z "double" do "float", możliwa utrata danych
+c:\users\mateusz\desktop\mk\project1\project1\main.cpp(951): warning C4244: "inicjowanie": konwersja z "double" do "float", możliwa utrata danych
+c:\users\mateusz\desktop\mk\project1\project1\main.cpp(959): warning C4244: "inicjowanie": konwersja z "double" do "float", możliwa utrata danych
+c:\users\mateusz\desktop\mk\project1\project1\main.cpp(960): warning C4244: "inicjowanie": konwersja z "double" do "float", możliwa utrata danych
+c:\users\mateusz\desktop\mk\project1\project1\main.cpp(968): warning C4244: "inicjowanie": konwersja z "double" do "float", możliwa utrata danych
+c:\users\mateusz\desktop\mk\project1\project1\main.cpp(969): warning C4244: "inicjowanie": konwersja z "double" do "float", możliwa utrata danych
+c:\users\mateusz\desktop\mk\project1\project1\main.cpp(1361): warning C4244: "inicjowanie": konwersja z "double" do "float", możliwa utrata danych
+c:\users\mateusz\desktop\mk\project1\project1\main.cpp(1362): warning C4244: "inicjowanie": konwersja z "double" do "float", możliwa utrata danych
+c:\users\mateusz\desktop\mk\project1\project1\main.cpp(1370): warning C4244: "inicjowanie": konwersja z "double" do "float", możliwa utrata danych
+c:\users\mateusz\desktop\mk\project1\project1\main.cpp(1371): warning C4244: "inicjowanie": konwersja z "double" do "float", możliwa utrata danych
+c:\users\mateusz\desktop\mk\project1\project1\main.cpp(1379): warning C4244: "inicjowanie": konwersja z "double" do "float", możliwa utrata danych
+c:\users\mateusz\desktop\mk\project1\project1\main.cpp(1380): warning C4244: "inicjowanie": konwersja z "double" do "float", możliwa utrata danych
+c:\users\mateusz\desktop\mk\project1\project1\main.cpp(1388): warning C4244: "inicjowanie": konwersja z "double" do "float", możliwa utrata danych
+c:\users\mateusz\desktop\mk\project1\project1\main.cpp(1389): warning C4244: "inicjowanie": konwersja z "double" do "float", możliwa utrata danych
+c:\users\mateusz\desktop\mk\project1\project1\main.cpp(1564): warning C4244: "inicjowanie": konwersja z "double" do "float", możliwa utrata danych
+c:\users\mateusz\desktop\mk\project1\project1\main.cpp(1565): warning C4244: "inicjowanie": konwersja z "double" do "float", możliwa utrata danych
   Project1.vcxproj -> C:\Users\Mateusz\Desktop\MK\Project1\Debug\ParowiecMK.exe
