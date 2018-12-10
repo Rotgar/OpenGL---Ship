@@ -45,7 +45,10 @@ std::vector<unsigned int> draw_paddles_i();
 std::vector<glm::vec3> draw_circle_v(float x, float y, float z, float r, int nr_points);
 std::vector<unsigned int> draw_circle_i(int nr_points);
 
+std::vector<float> draw_cylinder_vv(float x, float y, float z, float r1, float r2, float r3, int nr_points);
+std::vector<float> draw_rotator_vv(float x, float y, float z, float r1, float r2, float width, int nr_points);
 
+void generateTex(unsigned int texture, const char* path);
 // settings
 const unsigned int SCR_WIDTH = 1500;
 const unsigned int SCR_HEIGHT = 1000;
@@ -122,7 +125,7 @@ int main()
 	glm::vec3 bukszpryt = { LEFT_X + 1.2*LENGTH, DECK_LEVEL - DECK_HEIGHT, 0.0f };
 	std::vector<glm::vec3> deck = draw_deck(bukszpryt, right_bottom);
 	std::vector<unsigned> deck_i = draw_deck_i(deck.size());
-
+	/*
 	float verticesCrane[] = {
 
 		//dzwig
@@ -139,10 +142,11 @@ int main()
 		 0.48f,  0.05f, -0.02f,  1.0f, 0.0f, 0.0f,  // bottom left  front	  8
 		 0.9f ,  0.1f,  -0.05f,  1.0f, 0.0f, 0.0f,  // bottom right front	  9
 		 0.48f,  0.05f, -0.08f,  1.0f, 0.0f, 0.0f   // bottom left  behind     10
-	};
-
-	unsigned int indicesCrane[] = {
 	
+	};
+	
+	unsigned int indicesCrane[] = {
+
 		//dzwig 16
 		0, 1, 2,
 		1, 2, 3,
@@ -161,7 +165,53 @@ int main()
 		9, 10, 7,
 		10, 8, 9
 	};
+	*/
 
+	float verticesCrane[] = {
+		//positions           //normals            //texture
+		-0.1f, -0.3f, -0.1f,  0.0f,  0.0f, -1.0f,  0.0f,  0.0f,
+		 0.1f, -0.3f, -0.1f,  0.0f,  0.0f, -1.0f,  1.0f,  0.0f,
+		 0.1f,  0.3f, -0.1f,  0.0f,  0.0f, -1.0f,  1.0f,  10.0f,
+		 0.1f,  0.3f, -0.1f,  0.0f,  0.0f, -1.0f,  1.0f,  10.0f,
+		-0.1f,  0.3f, -0.1f,  0.0f,  0.0f, -1.0f,  0.0f,  10.0f,
+		-0.1f, -0.3f, -0.1f,  0.0f,  0.0f, -1.0f,  0.0f,  0.0f,
+
+		-0.1f, -0.3f,  0.1f,  0.0f,  0.0f,  1.0f,  0.0f,  0.0f,
+		 0.1f, -0.3f,  0.1f,  0.0f,  0.0f,  1.0f,  1.0f,  0.0f,
+		 0.1f,  0.3f,  0.1f,  0.0f,  0.0f,  1.0f,  1.0f,  10.0f,
+		 0.1f,  0.3f,  0.1f,  0.0f,  0.0f,  1.0f,  1.0f,  10.0f,
+		-0.1f,  0.3f,  0.1f,  0.0f,  0.0f,  1.0f,  0.0f,  10.0f,
+		-0.1f, -0.3f,  0.1f,  0.0f,  0.0f,  1.0f,  0.0f,  0.0f,
+
+		-0.1f,  0.3f,  0.1f, -1.0f,  0.0f,  0.0f,  1.0f,  10.0f,
+		-0.1f,  0.3f, -0.1f, -1.0f,  0.0f,  0.0f,  0.0f,  10.0f,
+		-0.1f, -0.3f, -0.1f, -1.0f,  0.0f,  0.0f,  0.0f,  0.0f,
+		-0.1f, -0.3f, -0.1f, -1.0f,  0.0f,  0.0f,  0.0f,  0.0f,
+		-0.1f, -0.3f,  0.1f, -1.0f,  0.0f,  0.0f,  1.0f,  0.0f,
+		-0.1f,  0.3f,  0.1f, -1.0f,  0.0f,  0.0f,  1.0f,  10.0f,
+
+		 0.1f,  0.3f,  0.1f,  1.0f,  0.0f,  0.0f,  1.0f,  0.0f,
+		 0.1f,  0.3f, -0.1f,  1.0f,  0.0f,  0.0f,  1.0f,  10.0f,
+		 0.1f, -0.3f, -0.1f,  1.0f,  0.0f,  0.0f,  0.0f,  10.0f,
+		 0.1f, -0.3f, -0.1f,  1.0f,  0.0f,  0.0f,  0.0f,  10.0f,
+		 0.1f, -0.3f,  0.1f,  1.0f,  0.0f,  0.0f,  0.0f,  0.0f,
+		 0.1f,  0.3f,  0.1f,  1.0f,  0.0f,  0.0f,  1.0f,  0.0f,
+
+		-0.1f, -0.3f, -0.1f,  0.0f, -1.0f,  0.0f,  0.0f,  10.0f,
+		 0.1f, -0.3f, -0.1f,  0.0f, -1.0f,  0.0f,  1.0f,  10.0f,
+		 0.1f, -0.3f,  0.1f,  0.0f, -1.0f,  0.0f,  1.0f,  0.0f,
+		 0.1f, -0.3f,  0.1f,  0.0f, -1.0f,  0.0f,  1.0f,  0.0f,
+		-0.1f, -0.3f,  0.1f,  0.0f, -1.0f,  0.0f,  0.0f,  0.0f,
+		-0.1f, -0.3f, -0.1f,  0.0f, -1.0f,  0.0f,  0.0f,  10.0f,
+
+		-0.1f,  0.3f, -0.1f,  0.0f,  1.0f,  0.0f,  0.0f,  10.0f,
+		 0.1f,  0.3f, -0.1f,  0.0f,  1.0f,  0.0f,  1.0f,  10.0f,
+		 0.1f,  0.3f,  0.1f,  0.0f,  1.0f,  0.0f,  1.0f,  0.0f,
+		 0.1f,  0.3f,  0.1f,  0.0f,  1.0f,  0.0f,  1.0f,  0.0f,
+		-0.1f,  0.3f,  0.1f,  0.0f,  1.0f,  0.0f,  0.0f,  0.0f,
+		-0.1f,  0.3f, -0.1f,  0.0f,  1.0f,  0.0f,  0.0f,  10.2f
+	};
+	
 	
 	unsigned int VAO, VBO, EBO;
 	unsigned int VAOChimney, VBOChimney, EBOChimney;
@@ -208,15 +258,16 @@ int main()
 	glBindBuffer(GL_ARRAY_BUFFER, VBOCrane);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(verticesCrane), verticesCrane, GL_STATIC_DRAW);
 
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBOCrane);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indicesCrane), indicesCrane, GL_STATIC_DRAW);
+	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBOCrane);
+	//glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indicesCrane), indicesCrane, GL_STATIC_DRAW);
 
 
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
-
-	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
 	glEnableVertexAttribArray(1);
+	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
+	glEnableVertexAttribArray(2);
 
 
 	//cylinder chimney - _c
@@ -239,6 +290,54 @@ int main()
 
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3*sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
+
+
+
+	//cylinder chimney - _cc
+	nr_points = 30;
+	std::vector<float> vertices_cc = draw_cylinder_vv(-1.4f, 1.2f, 0.0f, 0.17f, 0.10f, 0.08f, nr_points);
+
+	unsigned int VAO_cc, VBO_cc;
+	glGenVertexArrays(1, &VAO_cc);
+	glGenBuffers(1, &VBO_cc);
+
+	glBindVertexArray(VAO_cc);
+
+	glBindBuffer(GL_ARRAY_BUFFER, VBO_cc);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(float)*vertices_cc.size(), &vertices_cc[0], GL_STATIC_DRAW);
+
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
+	glEnableVertexAttribArray(0);
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
+	glEnableVertexAttribArray(1);
+	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
+	glEnableVertexAttribArray(2);
+
+
+	//rotator rr
+	float RX = -0.2f, RY = -0.85f, RZ = 1.0f, R1 = 0.4f, R2 = 0.65f, length = -0.4f;
+
+	nr_points = 10;
+	std::vector<float> vertices_rr = draw_rotator_vv(RX, RY, RZ, R1, R2, length, nr_points);
+	
+	unsigned int VAO_rr, VBO_rr;
+	glGenVertexArrays(1, &VAO_rr);
+	glGenBuffers(1, &VBO_rr);
+
+	glBindVertexArray(VAO_rr);
+
+	glBindBuffer(GL_ARRAY_BUFFER, VBO_rr);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(float)*vertices_rr.size(), &vertices_rr[0], GL_STATIC_DRAW);
+
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
+	glEnableVertexAttribArray(0);
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
+	glEnableVertexAttribArray(1);
+	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
+	glEnableVertexAttribArray(2);
+
+
+	/*
 
 	//rotator - r
 
@@ -263,7 +362,7 @@ int main()
 
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
-
+	*/
 
 	// paddles
 
@@ -382,34 +481,8 @@ int main()
 	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
 	glEnableVertexAttribArray(1);
 
-	unsigned int texture;
-	glGenTextures(1, &texture);
-	glBindTexture(GL_TEXTURE_2D, texture);
-	// set the texture wrapping/filtering options (on the currently bound texture object)
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	// load and generate the texture
-	int width, height, nrChannels;
-	unsigned char *data = stbi_load("Pictures\\sea2.jpg", &width, &height, &nrChannels, 0);
-	if (data)
-	{
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
-		glGenerateMipmap(GL_TEXTURE_2D);
-	}
-	else
-	{
-		std::cout << "Failed to load texture" << std::endl;
-	}
-	stbi_image_free(data);
-	
-	//shaderSea.use();
-	//glUniform1i(glGetUniformLocation(shaderSea.ID, "texture1"), 0);
 
-
-
-	// 
+	// crate
 
 	float verticesCrate[] = {
 		//positions           //normals            //texture
@@ -473,15 +546,30 @@ int main()
 	glEnableVertexAttribArray(2);
 
 
-	unsigned int textureCrate;
+	unsigned int textureSea, textureCrate, textureCrane, textureChimney, textureRotator;
+
+	glGenTextures(1, &textureSea);
+	generateTex(textureSea, "Pictures\\sea.jpg");
 
 	glGenTextures(1, &textureCrate);
-	glBindTexture(GL_TEXTURE_2D, textureCrate);
+	generateTex(textureCrate, "Pictures\\crate.jpg");
+
+	glGenTextures(1, &textureCrane);
+	generateTex(textureCrane, "Pictures\\crane1.jpg");
+
+	glGenTextures(1, &textureChimney);
+	generateTex(textureChimney, "Pictures\\chimney.jpg");
+
+	glGenTextures(1, &textureRotator);
+	generateTex(textureRotator, "Pictures\\rotator.jpg");
+	/*
+	glGenTextures(1, &textureRotator);
+	glBindTexture(GL_TEXTURE_2D, textureRotator);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	data = stbi_load("Pictures\\crate.jpg", &width, &height, &nrChannels, 0);
+	data = stbi_load("Pictures\\rotator.jpg", &width, &height, &nrChannels, 0);
 	if (data)
 	{
 		// note that the awesomeface.png has transparency and thus an alpha channel, so make sure to tell OpenGL the data type is of GL_RGBA
@@ -493,6 +581,8 @@ int main()
 		std::cout << "Failed to load texture" << std::endl;
 	}
 	stbi_image_free(data);
+	*/
+
 
 
 	Shader lightingShader("Shaders\\1.colors.vs", "Shaders\\1.colors.fs");
@@ -502,7 +592,6 @@ int main()
 	glGenVertexArrays(1, &lightVAO);
 	glBindVertexArray(lightVAO);
 
-	// we only need to bind to the VBO (to link it with glVertexAttribPointer), no need to fill it; the VBO's data already contains all we need (it's already bound, but we do it again for educational purposes)
 	glBindBuffer(GL_ARRAY_BUFFER, VBOCrate);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
@@ -512,14 +601,6 @@ int main()
 
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	glEnable(GL_DEPTH_TEST);
-
-
-
-
-
-
-
-
 
 
 
@@ -565,7 +646,7 @@ int main()
 
 		
 		// sea
-		glBindTexture(GL_TEXTURE_2D, texture);
+		glBindTexture(GL_TEXTURE_2D, textureSea);
 		shaderSea.use();
 		glBindVertexArray(VAOSea);
 		model = glm::mat4(1.0f);
@@ -580,7 +661,7 @@ int main()
 		lightingShader.setFloat("material.shininess", 32.0f);
 		lightingShader.setVec3("material.specular", 0.5f, 0.5f, 0.5f);
 		lightingShader.setVec3("dirLight.direction", -1.2f, -1.0f, 0.0f);
-		lightingShader.setVec3("dirLight.ambient", 0.15f, 0.15f, 0.1f);
+		lightingShader.setVec3("dirLight.ambient", 0.55f, 0.55f, 0.5f);
 		lightingShader.setVec3("dirLight.diffuse", 0.3f, 0.3f, 0.3f);
 		lightingShader.setVec3("dirLight.specular", 0.7f, 0.7f, 0.7f);
 		lightingShader.setMat4("projection", projection);
@@ -604,6 +685,40 @@ int main()
 		lightingShader.setMat4("model", model);
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 
+
+		//crane
+		glBindVertexArray(VAOCrane);
+		glBindTexture(GL_TEXTURE_2D, textureCrane);
+		model = glm::mat4(1.0f);
+		//model = glm::rotate(model, glm::radians(rotation), glm::vec3(0, 1, 0));
+		model = glm::translate(model, glm::vec3(-1.0f, 0.1f, 0.0f));
+
+		model = glm::scale(model, glm::vec3(1.5f, 2.0f, 0.8f));
+		lightingShader.setMat4("model", model);
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+
+
+
+		//chimney
+		glBindVertexArray(VAO_cc);
+		glBindTexture(GL_TEXTURE_2D, textureChimney);
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(1.0f+shipMovement, -0.6, -0.3));
+		lightingShader.setMat4("model", model);
+		glDrawArrays(GL_TRIANGLES, 0, vertices_cc.size()/8);
+
+		//rotator
+		glBindVertexArray(VAO_rr);
+		glBindTexture(GL_TEXTURE_2D, textureRotator);
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(shipMovement, 0.0f, 0.0f));
+		lightingShader.setMat4("model", model);
+		glDrawArrays(GL_TRIANGLES, 0, vertices_cc.size() / 8);
+
+		model = glm::translate(model, glm::vec3(0.0f, 0.0f, -1.6f));
+		lightingShader.setMat4("model", model);
+		glDrawArrays(GL_TRIANGLES, 0, vertices_cc.size() / 8);
+
 		// also draw the lamp object
 		/*
 		lampShader.use();
@@ -617,8 +732,6 @@ int main()
 		glBindVertexArray(lightVAO);
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 		*/
-
-
 
 		// bridge
 		ourShader.use();
@@ -652,55 +765,9 @@ int main()
 		glUniform4f(colorLoc, 0.5, 0.3, 0.1, 1.0);
 		glDrawElements(GL_TRIANGLES, deck_i.size(), GL_UNSIGNED_INT, 0);
 
-
-
-		//crane
-		glBindVertexArray(VAOCrane);
-		model = glm::mat4(1.0f);
-		//model = glm::rotate(model, glm::radians(rotation), glm::vec3(0, 1, 0));
-		model = glm::translate(model, glm::vec3(shipMovement, 0.1, 0));
-	
-		model = glm::scale(model, glm::vec3(1.5f, 2.0f, 0.8f));
-		ourShader.setMat4("model", model);
-
-		glUniform4f(colorLoc, 1.0, 0.0, 0.0, 1.0);
-		glDrawElements(GL_TRIANGLES, 48, GL_UNSIGNED_INT, 0);
-
-
-
-
-		// chimney
 		cylinder.use();
 		unsigned int cylinder_colorLoc = glGetUniformLocation(cylinder.ID, "newColor");
-
-		glBindVertexArray(VAO_c);
-		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(-0.4 + shipMovement, -0.6, -0.3));
-	
-		glUniform4f(cylinder_colorLoc, 1.0, 0.0, 0.0, 1.0);
-		cylinder.setMat4("projection", projection);
-		cylinder.setMat4("view", view);
-		cylinder.setMat4("model", model);
-		glDrawElements(GL_TRIANGLES, indices_c.size(), GL_UNSIGNED_INT, 0);
-	
-
 		glm::mat4 m1, m2, m3;
-
-		// rotator
-		glBindVertexArray(VAO_r);
-		model = glm::mat4(1.0f);
-
-		glUniform4f(cylinder_colorLoc, 1.0, 1.0, 0.0, 1.0);
-		cylinder.setMat4("projection", projection);
-		cylinder.setMat4("view", view);
-		model = glm::translate(model, glm::vec3(shipMovement, 0.0f, 0.0f));
-		cylinder.setMat4("model", model);
-		glDrawElements(GL_TRIANGLES, indices_r.size(), GL_UNSIGNED_INT, 0);
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(shipMovement, 0.0f, RZ - 2.6f)),
-		cylinder.setMat4("model", model);
-		glDrawElements(GL_TRIANGLES, indices_r.size(), GL_UNSIGNED_INT, 0);
-
-
 
 		// paddles
 		glBindVertexArray(VAO_p);
@@ -901,10 +968,273 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
 }
 
 
+
+
+std::vector<float> draw_cylinder_vv(float x, float y, float z, float r1, float r2, float r3, int nr_points)
+{
+	std::vector<glm::vec3> v1, v2, v3;
+	std::vector<float> vertices;
+
+	glm::vec3 up_center = glm::vec3(x, y, z);
+	glm::vec3 down_center = glm::vec3(x, 0, z);
+
+	for (float i = 0; i < nr_points; ++i)
+	{
+		float u = i / (float)nr_points,
+			nx = x + r1 * cos(u * 2.0f*M_PI),
+			nz = z + r1 * sin(u * 2.0f*M_PI);
+
+		v1.push_back(glm::vec3(nx, 0, nz));
+	}
+
+	for (float i = 0; i < nr_points; ++i)
+	{
+		float u = i / (float)nr_points,
+			nx = x + r2 * cos(u * 2.0f*M_PI),
+			nz = z + r2 * sin(u * 2.0f*M_PI);
+
+		v2.push_back(glm::vec3(nx, y, nz));
+	}
+
+	for (float i = 0; i < nr_points; ++i)
+	{
+		float u = i / (float)nr_points,
+			nx = x + r3 * cos(u * 2.0f*M_PI),
+			nz = z + r3 * sin(u * 2.0f*M_PI);
+
+		v3.push_back(glm::vec3(nx, y, nz));
+	}
+
+	for (int i = 0; i < v1.size(); ++i)
+	{
+		vertices.push_back(v1[i].x);	//coordinates
+		vertices.push_back(v1[i].y);
+		vertices.push_back(v1[i].z);
+
+		glm::vec3 tmp = v1[i] - down_center;	//normal
+		normalize(tmp);
+		vertices.push_back(tmp.x);
+		vertices.push_back(tmp.y);
+		vertices.push_back(tmp.z);
+
+		vertices.push_back(i/(float)nr_points);	//texture
+		vertices.push_back(0.0f);
+
+		vertices.push_back(v1[(i + 1) % nr_points].x);	//coordinates
+		vertices.push_back(v1[(i + 1) % nr_points].y);
+		vertices.push_back(v1[(i + 1) % nr_points].z);
+
+		tmp = v1[(i + 1) % nr_points] - down_center;	//normal
+		normalize(tmp);
+		vertices.push_back(tmp.x);
+		vertices.push_back(tmp.y);
+		vertices.push_back(tmp.z);
+
+		if (i == v1.size() - 1)
+			vertices.push_back(1.0f);	//texture
+		else
+			vertices.push_back(((i + 1) % nr_points) / (float)nr_points);	//texture
+
+		vertices.push_back(0.0f);
+
+		vertices.push_back(v2[i].x);	//coordinates
+		vertices.push_back(v2[i].y);
+		vertices.push_back(v2[i].z);
+
+		tmp = v2[i] - up_center;	//normal
+		normalize(tmp);
+		vertices.push_back(tmp.x);
+		vertices.push_back(tmp.y);
+		vertices.push_back(tmp.z);
+
+		vertices.push_back(i / (float)nr_points);	//texture
+		vertices.push_back(0.95f);
+
+		//2nd part
+
+		vertices.push_back(v1[(i + 1) % nr_points].x);	//coordinates
+		vertices.push_back(v1[(i + 1) % nr_points].y);
+		vertices.push_back(v1[(i + 1) % nr_points].z);
+
+		tmp = v1[(i + 1) % nr_points] - down_center;	//normal
+		normalize(tmp);
+		vertices.push_back(tmp.x);
+		vertices.push_back(tmp.y);
+		vertices.push_back(tmp.z);
+
+		if (i == v1.size() - 1)
+			vertices.push_back(1.0f);	//texture
+		else
+			vertices.push_back(((i + 1) % nr_points) / (float)nr_points);	//texture
+
+		vertices.push_back(0.0f);
+
+		vertices.push_back(v2[i].x);	//coordinates
+		vertices.push_back(v2[i].y);
+		vertices.push_back(v2[i].z);
+
+		tmp = v2[i] - up_center;	//normal
+		normalize(tmp);
+		vertices.push_back(tmp.x);
+		vertices.push_back(tmp.y);
+		vertices.push_back(tmp.z);
+
+		vertices.push_back(i / (float)nr_points);	//texture
+		vertices.push_back(0.95f);
+
+		vertices.push_back(v2[(i + 1) % nr_points].x);	//coordinates
+		vertices.push_back(v2[(i + 1) % nr_points].y);
+		vertices.push_back(v2[(i + 1) % nr_points].z);
+
+		tmp = v2[(i + 1) % nr_points] - up_center;	//normal
+		normalize(tmp);
+		vertices.push_back(tmp.x);
+		vertices.push_back(tmp.y);
+		vertices.push_back(tmp.z);
+
+		if(i==v1.size()-1)
+			vertices.push_back(1.0f);	//texture
+		else
+			vertices.push_back(((i + 1) % nr_points) / (float)nr_points);	//texture
+		
+		
+		vertices.push_back(0.95f);
+	}
+
+	for (int i = 0; i < v2.size(); ++i)
+	{
+		vertices.push_back(v2[i].x);	//coordinates
+		vertices.push_back(v2[i].y);
+		vertices.push_back(v2[i].z);
+						
+		vertices.push_back(0.0f);	//normal
+		vertices.push_back(1.0f);
+		vertices.push_back(0.0f);
+
+		vertices.push_back(i / (float)nr_points);	//texture
+		vertices.push_back(0.95f);
+
+
+		vertices.push_back(v2[(i + 1) % nr_points].x);	//coordinates
+		vertices.push_back(v2[(i + 1) % nr_points].y);
+		vertices.push_back(v2[(i + 1) % nr_points].z);
+
+		vertices.push_back(0.0f);		//normal
+		vertices.push_back(1.0f);
+		vertices.push_back(0.0f);
+
+		if (i == v2.size() - 1)
+			vertices.push_back(1.0f);	//texture
+		else
+			vertices.push_back(((i + 1) % nr_points) / (float)nr_points);	//texture
+
+		vertices.push_back(0.95f);
+
+		vertices.push_back(v3[i].x);	//coordinates
+		vertices.push_back(v3[i].y);
+		vertices.push_back(v3[i].z);
+
+		vertices.push_back(0.0f);	//normal
+		vertices.push_back(1.0f);
+		vertices.push_back(0.0f);
+
+		vertices.push_back(i / (float)nr_points);	//texture
+		vertices.push_back(1.0f);
+
+		//2nd part
+
+		vertices.push_back(v2[(i + 1) % nr_points].x);	//coordinates
+		vertices.push_back(v2[(i + 1) % nr_points].y);
+		vertices.push_back(v2[(i + 1) % nr_points].z);
+
+		vertices.push_back(0.0f);	//normal
+		vertices.push_back(1.0f);
+		vertices.push_back(0.0f);;
+
+		if (i == v2.size() - 1)
+			vertices.push_back(1.0f);	//texture
+		else
+			vertices.push_back(((i + 1) % nr_points) / (float)nr_points);	//texture
+
+		vertices.push_back(0.95f);
+
+		vertices.push_back(v3[i].x);	//coordinates
+		vertices.push_back(v3[i].y);
+		vertices.push_back(v3[i].z);
+
+		vertices.push_back(0.0f);	//normal
+		vertices.push_back(1.0f);
+		vertices.push_back(0.0f);;
+
+		vertices.push_back(i / (float)nr_points);	//texture
+		vertices.push_back(1.0f);
+
+		vertices.push_back(v3[(i + 1) % nr_points].x);	//coordinates
+		vertices.push_back(v3[(i + 1) % nr_points].y);
+		vertices.push_back(v3[(i + 1) % nr_points].z);
+
+		vertices.push_back(0.0f);	//normal
+		vertices.push_back(1.0f);
+		vertices.push_back(0.0f);;
+
+		if (i == v3.size() - 1)
+			vertices.push_back(1.0f);	//texture
+		else
+			vertices.push_back(((i + 1) % nr_points) / (float)nr_points);	//texture
+
+
+		vertices.push_back(1.0f);
+	}
+
+
+	return vertices;
+}
+
+
+
+
 // o == 0 - normal cylinder, o == 1 - cylinder with lower r up, o == 2 - cylinder without insides
 std::vector<glm::vec3> draw_cylinder_v(float x, float y, float z, float r1, float r2, float r3, int o, int nr_points)
 {
+	
 	std::vector<glm::vec3> vertices;
+
+	for (float i = 1; i <= nr_points; ++i)
+	{
+		float u = i / (float)nr_points,
+			nx = x + r1 * cos(u * 2.0f*M_PI),
+			nz = z + r1 * sin(u * 2.0f*M_PI);
+
+		vertices.push_back(glm::vec3(nx, 0, nz));
+	}
+
+	for (float i = 1; i <= nr_points; ++i)
+	{
+		float u = i / (float)nr_points,
+			nx = x + r3 * cos(u * 2.0f*M_PI),
+			nz = z + r3 * sin(u * 2.0f*M_PI);
+
+		vertices.push_back(glm::vec3(nx, 0, nz));
+	}
+
+	for (float i = 1; i <= nr_points; ++i)
+	{
+		float u = i / (float)nr_points,
+			nx = x + r2 * cos(u * 2.0f*M_PI),
+			nz = z + r2 * sin(u * 2.0f*M_PI);
+
+		vertices.push_back(glm::vec3(nx, y, nz));
+	}
+
+	for (float i = 1; i <= nr_points; ++i)
+	{
+		float u = i / (float)nr_points,
+			nx = x + r3 * cos(u * 2.0f*M_PI),
+			nz = z + r3 * sin(u * 2.0f*M_PI);
+
+		vertices.push_back(glm::vec3(nx, y, nz));
+	}
+
 	if (o != 2)
 	{
 		vertices.push_back(glm::vec3(x, 0, z));
@@ -971,8 +1301,11 @@ std::vector<glm::vec3> draw_cylinder_v(float x, float y, float z, float r1, floa
 			vertices.push_back(glm::vec3(nx, y, nz));
 		}
 	}
+	
 	return vertices;
 }
+
+
 std::vector<unsigned int> draw_cylinder_i(int nr_points, int o)
 {
 	std::vector<unsigned int> indices;
@@ -1350,6 +1683,315 @@ std::vector<unsigned int> draw_deck_i(int nr_points)
 	return result;
 }
 
+
+
+
+
+std::vector<float> draw_rotator_vv(float x, float y, float z, float r1, float r2, float width, int nr_points)
+{
+	std::vector<glm::vec3> v1, v2, v3, v4;
+	std::vector<float> vertices;
+
+	glm::vec3 front(x, y, z);
+	glm::vec3 back(x, y, z+width);
+
+	float x1 = r2 - r1, x2 = (-1)*width;
+	float x3 = 2 * x1 + x2;
+	x1 /= x3, x2 /= x3;
+
+	for (float i = 0; i <= nr_points; ++i)
+	{
+		float u = i / (float)(nr_points * 2),
+			nx = x + r1 * cos(u * 2.0f*M_PI),
+			ny = y + r1 * sin(u * 2.0f*M_PI);
+
+		v1.push_back(glm::vec3(nx, ny, z));
+	}
+
+	for (float i = 0; i <= nr_points; ++i)
+	{
+		float u = i / (float)(nr_points * 2),
+			nx = x + r2 * cos(u * 2.0f*M_PI),
+			ny = y + r2 * sin(u * 2.0f*M_PI);
+
+		v2.push_back(glm::vec3(nx, ny, z));
+	}
+
+	for (float i = 0; i <= nr_points; ++i)
+	{
+		float u = i / (float)(nr_points * 2),
+			nx = x + r1 * cos(u * 2.0f*M_PI),
+			ny = y + r1 * sin(u * 2.0f*M_PI);
+
+		v3.push_back(glm::vec3(nx, ny, z+width));
+	}
+
+	for (float i = 0; i <= nr_points; ++i)
+	{
+		float u = i / (float)(nr_points * 2),
+			nx = x + r2 * cos(u * 2.0f*M_PI),
+			ny = y + r2 * sin(u * 2.0f*M_PI);
+
+		v4.push_back(glm::vec3(nx, ny, z+width));
+	}
+
+	for (int i = 0; i < v1.size() - 1; ++i)
+	{
+		//coordinates
+		vertices.push_back(v1[i].x);	vertices.push_back(v1[i].y);	vertices.push_back(v1[i].z);
+		//normals
+		vertices.push_back(0.0f);	vertices.push_back(0.0f);	vertices.push_back(1.0f);
+		//texture
+		vertices.push_back(i / (float)nr_points);	vertices.push_back(0.0f);
+		
+		//coordinates
+		vertices.push_back(v1[(i + 1)].x);	vertices.push_back(v1[(i + 1)].y);	vertices.push_back(v1[(i + 1)].z);
+		//normals
+		vertices.push_back(0.0f);	vertices.push_back(0.0f);	vertices.push_back(1.0f);
+		//texture
+		vertices.push_back(((i + 1)) / (float)nr_points);	vertices.push_back(0.0f);
+
+		//coordinates
+		vertices.push_back(v2[i].x);	vertices.push_back(v2[i].y);	vertices.push_back(v2[i].z);
+		//normals
+		vertices.push_back(0.0f);	vertices.push_back(0.0f);	vertices.push_back(1.0f);
+		//texture
+		vertices.push_back(i / (float)nr_points);	vertices.push_back(x1);
+
+		//2nd part
+		//coordinates
+		vertices.push_back(v1[(i + 1)].x);	vertices.push_back(v1[(i + 1)].y);	vertices.push_back(v1[(i + 1)].z);		
+		//normals
+		vertices.push_back(0.0f);	vertices.push_back(0.0f);	vertices.push_back(1.0f);
+		//texture
+		vertices.push_back(((i + 1)) / (float)nr_points);	vertices.push_back(0.0f);
+
+		//coordinates
+		vertices.push_back(v2[i].x);	vertices.push_back(v2[i].y);	vertices.push_back(v2[i].z);
+		//normals
+		vertices.push_back(0.0f);	vertices.push_back(0.0f);	vertices.push_back(1.0f);
+		//texture
+		vertices.push_back(i / (float)nr_points);	vertices.push_back(x1);
+		
+		//coordinates
+		vertices.push_back(v2[(i + 1)].x);	vertices.push_back(v2[(i + 1)].y);	vertices.push_back(v2[(i + 1)].z);
+		//normals
+		vertices.push_back(0.0f);	vertices.push_back(0.0f);	vertices.push_back(1.0f);
+		//texture
+		vertices.push_back(((i + 1)) / (float)nr_points);	vertices.push_back(x1);
+	}
+	for (int i = 0; i < v3.size() - 1; ++i)
+	{
+		//coordinates
+		vertices.push_back(v3[i].x);	vertices.push_back(v3[i].y);	vertices.push_back(v3[i].z);
+		//normals
+		vertices.push_back(0.0f);	vertices.push_back(0.0f);	vertices.push_back(-1.0f);
+		//texture
+		vertices.push_back(i / (float)nr_points);	vertices.push_back(1.0f);
+
+		//coordinates
+		vertices.push_back(v3[(i + 1)].x);	vertices.push_back(v3[(i + 1)].y);	vertices.push_back(v3[(i + 1)].z);
+		//normals
+		vertices.push_back(0.0f);	vertices.push_back(0.0f);	vertices.push_back(-1.0f);
+		//texture
+		vertices.push_back(((i + 1)) / (float)nr_points);	vertices.push_back(1.0f);
+
+		//coordinates
+		vertices.push_back(v4[i].x);	vertices.push_back(v4[i].y);	vertices.push_back(v4[i].z);
+		//normals
+		vertices.push_back(0.0f);	vertices.push_back(0.0f);	vertices.push_back(-1.0f);
+		//texture
+		vertices.push_back(i / (float)nr_points);	vertices.push_back(x1+x2);
+
+		//2nd part
+		//coordinates
+		vertices.push_back(v3[(i + 1)].x);	vertices.push_back(v3[(i + 1)].y);	vertices.push_back(v3[(i + 1)].z);
+		//normals
+		vertices.push_back(0.0f);	vertices.push_back(0.0f);	vertices.push_back(-1.0f);
+		//texture
+		vertices.push_back(((i + 1)) / (float)nr_points);	vertices.push_back(1.0f);
+
+		//coordinates
+		vertices.push_back(v4[i].x);	vertices.push_back(v4[i].y);	vertices.push_back(v4[i].z);
+		//normals
+		vertices.push_back(0.0f);	vertices.push_back(0.0f);	vertices.push_back(-1.0f);
+		//texture
+		vertices.push_back(i / (float)nr_points);	vertices.push_back(x1+x2);
+
+		//coordinates
+		vertices.push_back(v4[(i + 1)].x);	vertices.push_back(v4[(i + 1)].y);	vertices.push_back(v4[(i + 1)].z);
+		//normals
+		vertices.push_back(0.0f);	vertices.push_back(0.0f);	vertices.push_back(-1.0f);
+		//texture
+		vertices.push_back(((i + 1)) / (float)nr_points);	vertices.push_back(x1+x2);
+	}
+	for (int i = 0; i < v1.size() - 1; ++i)
+	{
+		//coordinates
+		vertices.push_back(v1[i].x);	vertices.push_back(v1[i].y);	vertices.push_back(v1[i].z);
+		//normals
+		glm::vec3 tmp = front - v1[i];
+		normalize(tmp);
+		vertices.push_back(tmp.x);	vertices.push_back(tmp.y);	vertices.push_back(tmp.z);
+		//texture
+		vertices.push_back(i / (float)nr_points);	vertices.push_back(0.0f);
+
+		//coordinates
+		vertices.push_back(v1[(i + 1)].x);	vertices.push_back(v1[(i + 1)].y);	vertices.push_back(v1[(i + 1)].z);
+		//normals
+		tmp = front - v1[i+1];
+		normalize(tmp);
+		vertices.push_back(tmp.x);	vertices.push_back(tmp.y);	vertices.push_back(tmp.z);
+		//texture
+		vertices.push_back(((i + 1)) / (float)nr_points);	vertices.push_back(0.0f);
+
+		//coordinates
+		vertices.push_back(v3[i].x);	vertices.push_back(v3[i].y);	vertices.push_back(v3[i].z);
+		//normals
+		tmp = back - v3[i];
+		normalize(tmp);
+		vertices.push_back(tmp.x);	vertices.push_back(tmp.y);	vertices.push_back(tmp.z);
+		//texture
+		vertices.push_back(i / (float)nr_points);	vertices.push_back(1.0f);
+
+		//2nd part
+		//coordinates
+		vertices.push_back(v1[(i + 1)].x);	vertices.push_back(v1[(i + 1)].y);	vertices.push_back(v1[(i + 1)].z);
+		//normals
+		tmp = front - v1[i+1];
+		normalize(tmp);
+		vertices.push_back(tmp.x);	vertices.push_back(tmp.y);	vertices.push_back(tmp.z);
+		//texture
+		vertices.push_back(((i + 1)) / (float)nr_points);	vertices.push_back(0.0f);
+
+		//coordinates
+		vertices.push_back(v3[i].x);	vertices.push_back(v3[i].y);	vertices.push_back(v3[i].z);
+		//normals
+		tmp = back - v3[i];
+		normalize(tmp);
+		vertices.push_back(tmp.x);	vertices.push_back(tmp.y);	vertices.push_back(tmp.z);
+		//texture
+		vertices.push_back(i / (float)nr_points);	vertices.push_back(1.0f);
+
+		//coordinates
+		vertices.push_back(v3[(i + 1)].x);	vertices.push_back(v3[(i + 1)].y);	vertices.push_back(v3[(i + 1)].z);
+		//normals
+		tmp = back - v3[i+1];
+		normalize(tmp);
+		vertices.push_back(tmp.x);	vertices.push_back(tmp.y);	vertices.push_back(tmp.z);
+		//texture
+		vertices.push_back(((i + 1)) / (float)nr_points);	vertices.push_back(1.0f);
+	}
+	for (int i = 0; i < v2.size() - 1; ++i)
+	{
+		//coordinates
+		vertices.push_back(v2[i].x);	vertices.push_back(v2[i].y);	vertices.push_back(v2[i].z);
+		//normals
+		glm::vec3 tmp = v2[i] - front;
+		normalize(tmp);
+		vertices.push_back(tmp.x);	vertices.push_back(tmp.y);	vertices.push_back(tmp.z);
+		//texture
+		vertices.push_back(i / (float)nr_points);	vertices.push_back(x1);
+
+		//coordinates
+		vertices.push_back(v2[(i + 1)].x);	vertices.push_back(v2[(i + 1)].y);	vertices.push_back(v2[(i + 1)].z);
+		//normals
+		tmp = v2[i+1] - front;
+		normalize(tmp);
+		vertices.push_back(tmp.x);	vertices.push_back(tmp.y);	vertices.push_back(tmp.z);
+		//texture
+		vertices.push_back(((i + 1)) / (float)nr_points);	vertices.push_back(x1);
+
+		//coordinates
+		vertices.push_back(v4[i].x);	vertices.push_back(v4[i].y);	vertices.push_back(v4[i].z);
+		//normals
+		tmp = v4[i] - back;
+		normalize(tmp);
+		vertices.push_back(tmp.x);	vertices.push_back(tmp.y);	vertices.push_back(tmp.z);
+		//texture
+		vertices.push_back(i / (float)nr_points);	vertices.push_back(x1+x2);
+
+		//2nd part
+		//coordinates
+		vertices.push_back(v2[(i + 1)].x);	vertices.push_back(v2[(i + 1)].y);	vertices.push_back(v2[(i + 1)].z);
+		//normals
+		tmp = v2[i+1] - front;
+		normalize(tmp);
+		vertices.push_back(tmp.x);	vertices.push_back(tmp.y);	vertices.push_back(tmp.z);
+		//texture
+		vertices.push_back(((i + 1)) / (float)nr_points);	vertices.push_back(x1);
+
+		//coordinates
+		vertices.push_back(v4[i].x);	vertices.push_back(v4[i].y);	vertices.push_back(v4[i].z);
+		//normals
+		tmp = v4[i] - back;
+		normalize(tmp);
+		vertices.push_back(tmp.x);	vertices.push_back(tmp.y);	vertices.push_back(tmp.z);
+		//texture
+		vertices.push_back(i / (float)nr_points);	vertices.push_back(x1+x2);
+
+		//coordinates
+		vertices.push_back(v4[(i + 1)].x);	vertices.push_back(v4[(i + 1)].y);	vertices.push_back(v4[(i + 1)].z);
+		//normals
+		tmp = v4[i+1] - back;
+		normalize(tmp);
+		vertices.push_back(tmp.x);	vertices.push_back(tmp.y);	vertices.push_back(tmp.z);
+		//texture
+		vertices.push_back(((i + 1)) / (float)nr_points);	vertices.push_back(x1+x2);
+	}
+
+	{
+		vertices.push_back(v1[0].x);	vertices.push_back(v1[0].y);	vertices.push_back(v1[0].z);
+		vertices.push_back(0.0f);		vertices.push_back(-1.0f);		vertices.push_back(0.0f);
+		vertices.push_back(0.0f);		vertices.push_back(0.0f);
+		vertices.push_back(v2[0].x);	vertices.push_back(v2[0].y);	vertices.push_back(v2[0].z);
+		vertices.push_back(0.0f);		vertices.push_back(-1.0f);		vertices.push_back(0.0f);
+		vertices.push_back(1.0f);		vertices.push_back(0.0f);
+		vertices.push_back(v4[0].x);	vertices.push_back(v4[0].y);	vertices.push_back(v4[0].z);
+		vertices.push_back(0.0f);		vertices.push_back(-1.0f);		vertices.push_back(0.0f);
+		vertices.push_back(1.0f);		vertices.push_back(1.0f);
+
+		vertices.push_back(v1[0].x);	vertices.push_back(v1[0].y);	vertices.push_back(v1[0].z);
+		vertices.push_back(0.0f);		vertices.push_back(-1.0f);		vertices.push_back(0.0f);
+		vertices.push_back(0.0f);		vertices.push_back(0.0f);
+		vertices.push_back(v3[0].x);	vertices.push_back(v3[0].y);	vertices.push_back(v3[0].z);
+		vertices.push_back(0.0f);		vertices.push_back(-1.0f);		vertices.push_back(0.0f);
+		vertices.push_back(0.0f);		vertices.push_back(1.0f);
+		vertices.push_back(v4[0].x);	vertices.push_back(v4[0].y);	vertices.push_back(v4[0].z);
+		vertices.push_back(0.0f);		vertices.push_back(-1.0f);		vertices.push_back(0.0f);
+		vertices.push_back(1.0f);		vertices.push_back(1.0f);
+
+		int size = v1.size();
+		vertices.push_back(v1[size-1].x);	vertices.push_back(v1[size - 1].y);	vertices.push_back(v1[size - 1].z);
+		vertices.push_back(0.0f);			vertices.push_back(-1.0f);			vertices.push_back(0.0f);
+		vertices.push_back(0.0f);			vertices.push_back(0.0f);
+		vertices.push_back(v2[size-1].x);	vertices.push_back(v2[size - 1].y);	vertices.push_back(v2[size - 1].z);
+		vertices.push_back(0.0f);			vertices.push_back(-1.0f);			vertices.push_back(0.0f);
+		vertices.push_back(1.0f);			vertices.push_back(0.0f);
+		vertices.push_back(v4[size-1].x);	vertices.push_back(v4[size - 1].y);	vertices.push_back(v4[size - 1].z);
+		vertices.push_back(0.0f);			vertices.push_back(-1.0f);			vertices.push_back(0.0f);
+		vertices.push_back(1.0f);			vertices.push_back(1.0f);
+
+		vertices.push_back(v1[size - 1].x);	vertices.push_back(v1[size - 1].y);	vertices.push_back(v1[size - 1].z);
+		vertices.push_back(0.0f);			vertices.push_back(-1.0f);			vertices.push_back(0.0f);
+		vertices.push_back(0.0f);			vertices.push_back(0.0f);
+		vertices.push_back(v3[size - 1].x);	vertices.push_back(v3[size - 1].y);	vertices.push_back(v3[size - 1].z);
+		vertices.push_back(0.0f);			vertices.push_back(-1.0f);			vertices.push_back(0.0f);
+		vertices.push_back(0.0f);			vertices.push_back(1.0f);
+		vertices.push_back(v4[size - 1].x);	vertices.push_back(v4[size - 1].y);	vertices.push_back(v4[size - 1].z);
+		vertices.push_back(0.0f);			vertices.push_back(-1.0f);			vertices.push_back(0.0f);
+		vertices.push_back(1.0f);			vertices.push_back(1.0f);
+	}
+	return vertices;
+}
+
+
+
+
+
+
+
+
 //```````````````````````````````````rotator
 std::vector<glm::vec3> draw_rotator_v(float x, float y, float z, float r1, float r2, float width, int nr_points)
 {
@@ -1586,3 +2228,34 @@ std::vector<unsigned int> draw_circle_i(int nr_points)
 	return indices;
 }
 
+void normalize(glm::vec3 &v)
+{
+	float magnitude = sqrt(v.x*v.x + v.y*v.y + v.z*v.z);
+	v.x = v.x / magnitude;
+	v.y = v.y / magnitude;
+	v.z = v.z / magnitude;
+
+}
+
+void generateTex(unsigned int texture, const char* path)
+{
+	glBindTexture(GL_TEXTURE_2D, texture);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	stbi_set_flip_vertically_on_load(true);
+	int width, height, nrChannels;
+	unsigned char *data = stbi_load(path, &width, &height, &nrChannels, 0);
+	if (data)
+	{
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+		glGenerateMipmap(GL_TEXTURE_2D);
+	}
+	else
+	{
+		std::cout << "Failed to load texture" << std::endl;
+	}
+	stbi_image_free(data);
+
+}
